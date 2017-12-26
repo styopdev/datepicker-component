@@ -21,7 +21,6 @@ module.exports = {
   },
 
   plugins: [new HtmlWebpackPlugin({
-    title: 'Typescript + angularjs datepicker component',
     template: 'src/index.html'
   })],
 
