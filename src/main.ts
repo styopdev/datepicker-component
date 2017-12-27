@@ -1,7 +1,5 @@
 import * as angular from 'angular';
 import * as ngMaterial from 'angular-material';
-import * as ngAnimate from 'angular-animate';
-import * as ngAria from 'angular-aria';
 import * as moment from 'moment';
 
 
@@ -69,7 +67,7 @@ class DatepickerComponent implements ng.IComponentOptions {
 }
 
 angular
-  .module("ngApp", [ngAnimate, ngAria, ngMaterial])
+  .module("ngApp", [ngMaterial])
   .component("datepicker", new DatepickerComponent());
 
 angular.element(document).ready(function() {
