@@ -4,12 +4,13 @@ class DemoComponentController implements ng.IComponentController {
   public date1: string;
   public date2: string;
 
-  changeDates(newDates: any) {
-    this.date1 = newDates.dateFrom;
-    this.date2 = newDates.dateTo;
+  changeDates(newDates) {
+    this.date1 = newDates.dateFrom ? moment(newDates.dateFrom).format('YYYY-MM-DD') : null;
+    this.date2 = newDates.dateTo ? moment(newDates.dateTo).format('YYYY-MM-DD') : null;
   }
 
   constructor() {
+      this.changeDates = this.changeDates.bind(this);
   }
 
   public $onInit () {
@@ -26,7 +27,7 @@ class DemoComponent implements ng.IComponentOptions {
     this.controller = DemoComponentController;
     this.controllerAs = "$ctrl";
     this.template = `
-    <mc-dates date-from='$ctrl.date1' date-to='$ctrl.date2' mc-change='$ctrl.changeDates(newDates)'></mc-dates>
+    <mc-dates date-from='$ctrl.date1' date-to='$ctrl.date2' mc-change='$ctrl.changeDates'></mc-dates>
     <md-input-container>
       <label>Дата 1</label>
       <input ng-model='$ctrl.date1'>
@@ -38,6 +39,5 @@ class DemoComponent implements ng.IComponentOptions {
     `;
   }
 }
-
 
 export default DemoComponent;
